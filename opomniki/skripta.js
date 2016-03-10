@@ -3,12 +3,28 @@ window.addEventListener('load', function() {
 	
 	//Izvedi prijavo
 	var izvediPrijavo = function(event) {
-		var uporabnik = document.querySelector("#uporabnisko_ime").value;
+		var uporabnik = document.getElementById("uporabnisko_ime").value;
 		document.querySelector("#uporabnik").innerHTML = uporabnik;
 		document.querySelector(".pokrivalo").style.visibility = "Hidden";
 	}
 	document.querySelector("#prijavniGumb").addEventListener(
 		'click', izvediPrijavo);
+		
+	//Dodaj opomnik
+	var dodajOpomnik = function(event) {
+		var naziv = document.querySelector("#naziv_opomnika").value;
+		var cas = document.querySelector("#cas_opomnika").value;
+		document.querySelector("#naziv_opomnika").value = "";
+		document.querySelector("#cas_opomnika").value = "";
+		document.querySelector("#opomniki").innerHTML += "\
+			<div class='opomnik'> \
+				<div class='naziv_opomnika'>" + naziv + "</div> \
+				<div class='cas_opomnika'>Opomnik čez <span>" + cas +
+				"</span> sekund.</div> \
+			</div>";
+		
+	}
+	document.querySelector("#dodajGumb").addEventListener('click', dodajOpomnik);
 		
 	//Posodobi opomnike
 	var posodobiOpomnike = function() {
